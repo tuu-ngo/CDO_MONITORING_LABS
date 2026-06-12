@@ -1,0 +1,18 @@
+# Terraform state & cache
+**/.terraform/
+**/.terraform.lock.hcl
+*.tfstate
+*.tfstate.backup
+*.tfplan
+
+# Sensitive variables — NEVER commit
+**/terraform.tfvars
+
+# Large binary / course materials
+*.pdf
+
+# OS & editor
+.DS_Store
+Thumbs.db
+.vscode/
+*.swp
