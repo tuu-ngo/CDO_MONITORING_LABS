@@ -1,10 +1,19 @@
-# Copy file này thành terraform.tfvars và điền thông tin của bạn
-# cp terraform.tfvars.example terraform.tfvars
+# Copy file này thành terraform.tfvars và điền thông tin của bạn:
+# Windows: copy terraform.tfvars.example terraform.tfvars
+# Linux/Mac: cp terraform.tfvars.example terraform.tfvars
 
-aws_region      = "ap-southeast-1"
-sns_topic_name  = "cpu-alert-topic"
-alert_email     = "your-email@example.com"   # <-- thay bằng email của bạn
-ec2_instance_id = "i-0xxxxxxxxxxxxxxxx"       # <-- thay bằng Instance ID của bạn
-cpu_threshold   = 80
-period_seconds  = 300
+aws_region  = "ap-southeast-1"
+alert_email = "your-email@example.com"  # <-- THAY bằng email thật của bạn
+
+# EC2 configuration
+instance_name = "session03-monitored-ec2"
+instance_type = "t2.micro"
+
+# Set true để EC2 tự chạy stress test lúc khởi động (test alarm ngay)
+enable_stress_test = false
+
+# CloudWatch Alarm thresholds
+sns_topic_name     = "cpu-alert-topic"
+cpu_threshold      = 80
+period_seconds     = 300
 evaluation_periods = 1

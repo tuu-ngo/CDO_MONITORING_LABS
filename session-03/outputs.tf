@@ -1,11 +1,21 @@
+output "ec2_instance_id" {
+  description = "ID of the EC2 instance being monitored"
+  value       = aws_instance.monitored.id
+}
+
+output "ec2_public_ip" {
+  description = "Public IP of the EC2 instance"
+  value       = aws_instance.monitored.public_ip
+}
+
+output "ec2_ami_used" {
+  description = "Amazon Linux 2023 AMI ID selected"
+  value       = data.aws_ami.amazon_linux_2023.id
+}
+
 output "sns_topic_arn" {
   description = "ARN of the SNS Topic created for CPU alerts"
   value       = aws_sns_topic.cpu_alert.arn
-}
-
-output "sns_topic_name" {
-  description = "Name of the SNS Topic"
-  value       = aws_sns_topic.cpu_alert.name
 }
 
 output "cloudwatch_alarm_name" {

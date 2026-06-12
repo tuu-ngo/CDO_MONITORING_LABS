@@ -4,6 +4,24 @@ variable "aws_region" {
   default     = "ap-southeast-1"
 }
 
+variable "instance_name" {
+  description = "Name tag for the EC2 instance"
+  type        = string
+  default     = "session03-monitored-ec2"
+}
+
+variable "instance_type" {
+  description = "EC2 instance type"
+  type        = string
+  default     = "t2.micro"
+}
+
+variable "enable_stress_test" {
+  description = "If true, run stress tool on EC2 startup to simulate high CPU"
+  type        = bool
+  default     = false
+}
+
 variable "sns_topic_name" {
   description = "Name for the SNS topic"
   type        = string
@@ -12,11 +30,6 @@ variable "sns_topic_name" {
 
 variable "alert_email" {
   description = "Email address to receive CPU alert notifications"
-  type        = string
-}
-
-variable "ec2_instance_id" {
-  description = "EC2 Instance ID to monitor (e.g. i-0abc1234def56789)"
   type        = string
 }
 
@@ -29,11 +42,11 @@ variable "cpu_threshold" {
 variable "period_seconds" {
   description = "The period in seconds over which the metric is evaluated"
   type        = number
-  default     = 300 # 5 minutes
+  default     = 300
 }
 
 variable "evaluation_periods" {
-  description = "Number of periods that must breach before triggering alarm"
+  description = "Number of consecutive periods that must breach before triggering alarm"
   type        = number
   default     = 1
 }
